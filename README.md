@@ -1,2 +1,2 @@
 # the-cycle-project
-A Cycle renting website
+A Cycle renting web-app
