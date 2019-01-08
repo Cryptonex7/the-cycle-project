@@ -1,0 +1,27 @@
+.button{
+    margin-right: 40px;
+    border-radius: 40px;
+    padding: 15px 30px;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    vertical-align: top;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    transition: transform 250ms;
+    transition: background-color 550ms;
+    transition: color 550ms;
+}
+
+.button:hover{
+    background-color: azure;
+    color: black;
+    border: 3px solid #ff5722;
+    padding: 12px 27px;
+
+}
+
+.button:active{
+    transform: scale(0.92);
+}

@@ -8,6 +8,10 @@ app.get('/', (req, res) => {
     res.json("Cycle Awayyyy!");
 })
 
+app.get('/dashboard', (req, res) => {
+    res.send("dash serve");
+})
+
 app.listen(PORT, () => {
     console.log(`server is listening on ${PORT}`);
 })
