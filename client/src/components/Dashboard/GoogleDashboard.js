@@ -17,11 +17,13 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 class Dashboard extends React.Component {
+    componentDidMount() {
+    }
+
     render() {
         return(
             <div className="Dashboard body-bkgx">
-              Dashiiiiinggg!
-              <a href="/api/logout" className="button light-primary">Logout</a>
+              Dashiiiiinggg! Googalwaaa
             </div>
         );
     }

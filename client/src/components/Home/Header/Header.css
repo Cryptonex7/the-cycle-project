@@ -5,35 +5,53 @@
     justify-items: center;
     align-items: center;
 }
+.credits{
+    font-size: 0.8rem;
+    color: var(--ac-text-gray);
+}
 
 .header{
     padding: 100px;
+    background-color: var(--ac-gray);
+    box-shadow: 0px 8px 15px 1px gray;
+}
+.level-1{
+    animation: float 4s ease-in-out -350ms infinite;
+}
+.level-2{
+    animation: float 4s ease-in-out -600ms infinite;
+}
+.level-3{
+    animation: float 4s ease-in-out -100ms infinite;
+}
+.level-4{
+    animation: float 4s ease-in-out 800ms infinite;
 }
 
 .sub-title{
-    font-size: 4rem;
-    animation: float 4s ease-in-out -700ms infinite;
+    font-size: 2rem;
 }
 
 .title{
-    font-size: 12rem;
-    animation: float 4s ease-in-out -350ms infinite;
+    font-size: 6rem;
 
 }
+
+
 
 
 
 
 @keyframes float{
     0%{ 
-        transform: translateY(10px);
+        transform: translateY(7px);
     }
 
     50%{
-        transform: translateY(-10px);
+        transform: translateY(-7px);
     }
 
     100%{
-        transform: translateY(10px);
+        transform: translateY(7px);
     }
 }

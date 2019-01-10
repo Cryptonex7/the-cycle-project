@@ -3,15 +3,28 @@ import "./Header.css"
 
 const Header = ({toggleModal}) => {
     return(
-        <div className="text-primary default-primary">
+        <div className="text-primary ">
             
             <div className="header">
                 <div className="title">
-                    Cycly
+                    <div className="level-1">
+                        Google
+                        <span className="red-text">OAuth</span>
+                        <span className="sub-title"> &</span><br/> 
+                    </div>
+                    <div className="level-2">
+                        Native <span className="accent-text"> SignUps</span>
+                    </div>
                 </div>
                 <div className="sub-title">
-                    Earn and Stay Fit!
-                </div>
+                    <div className="level-3">
+                        <br/>
+                        Mongo All the Way!!! <br/>
+                    </div>
+                    <div className="level-4">
+                        <span className="credits primary-text"> by Anujeet Chatterjee (Cryptonex7)</span>
+                    </div>
+                </div>    
                 <div className="button-container">
                     {/* <Link exact to = '/login'  activeClassName='active-link' className="btn-login button accent text-primary">LOGIN</Link> */}
                     {/* <Link exact to = '/signup' activeClassName='active-link' className="btn-signup button accent text-primary">SIGN UP</Link> */}

@@ -5,6 +5,7 @@
 .light-primary   { background: #C5CAE9; }
 .text-primary    { color: #FFFFFF; }
 .accent          { background: #FF5722; }
+.accent-text     { color: #FF5722; }
 .primary-text    { color: #212121; }
 .secondary-text  { color: #757575; }
 .divider         { border-color: #BDBDBD; }

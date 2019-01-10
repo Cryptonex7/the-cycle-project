@@ -1,9 +1,71 @@
-.btn-signup-form{
-    margin-bottom: 30px;
+.btn-facebook-form{
+    background-color: #3b5998;
+    color: white;
 }
+
+.btn-facebook-form:hover .btn-text, .btn-google-form:hover .btn-text{
+    color: black;
+}
+
+.btn-google-form{
+    background-color: #DB4437;
+    color: white;
+}
+
+
+.btn-group{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+.btn-group-local{
+    padding: 20px 0;
+    display: flex;
+    align-items: center;
+}
+.btn-group-local > * {
+    margin-right:20px;
+}
+
+.btn-group-oauth{
+    padding: 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-group-oauth > *{
+    margin: 0 20px;
+}
+
+.btn-signup-form{
+    background-color: var(--ac-red);
+    color: white;
+}
+
+.btn-text{
+    text-decoration: none;
+    text-align: center;
+    border-radius: 40px;
+    padding: 0px 30px;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    vertical-align: top;
+    color: white;
+}
+
+
 
 .form{
     padding: 0 10%;
+}
+
+.form-flex{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .form-container{
@@ -13,14 +75,18 @@
     border-bottom-right-radius: 50px;
     font-size: 1.5rem;
     box-shadow: inset 0px 5px 10px 0px gray;
-    border: 1px solid #eaeaea;
+    border: 1px solid var(--ac-light-gray);
     border-top: none;
 }
 
+.icon{
+    border-right: 1px solid lightgray;
+    border-radius: 20px;
+}
 
 .inputs{
     border-radius: 40px;
-    border: 1px solid #eaeaea;
+    border: 1px solid var(--ac-light-gray);
 
     height: 20px;
     width: 80%;
@@ -30,15 +96,20 @@
     outline: none;
     font-size: 1rem;
 }
+
+.left-col{
+    display: inline-block;
+    width: 50%;
+    padding-right: 5%;
+}
 .Login{
-    margin: 150px auto;
+    margin: 0;
     width: 30%;
     border-radius: 50px;
 }
 
 .login-container{
-    background-color: #25252592;
-    
+    background-color: #252525ec;
     position: fixed;
     top: 0;
     left: 0;
@@ -49,12 +120,46 @@
     justify-content: center;
 }
 
+.login-logo{
+    margin:  10px 37%;
+}
+
+.or, .or-login-with{
+    color: gray;
+}
+
+.or-login-with{
+    display: flex;
+    justify-content: center;
+}
+
+.right-col{
+    display: inline-block;
+    width: 30%;
+    padding-left: 5%;
+    border-left: 2px solid lightgray;
+}
+
+.SignUp{
+    margin: 0;
+    width: 60%;
+    border-radius: 50px;
+}
+
+.verticle-partition{
+    border-left: 6px solid green;
+    height: 500px;
+    left: 50%;
+    margin-left: -3px;
+    top: 25%;
+}
 .welcome{
     text-align: center;
-    border: 1px solid #eaeaea;
+    border: 1px solid var(--ac-gray);
     border-bottom: none;
     border-top-left-radius: 50px;
     border-top-right-radius: 50px;
     padding: 20px;
     font-size: 3rem;
+    background-color: var(--ac-gray);
 }

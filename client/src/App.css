@@ -1,5 +1,5 @@
+@import url(./variables.css);
 .button{
-    margin-right: 40px;
     border-radius: 40px;
     padding: 15px 30px;
     border: none;
@@ -25,3 +25,12 @@
 .button:active{
     transform: scale(0.92);
 }
+
+.gray-text {
+  color: var(--ac-text-gray);
+}
+.red-text {
+  color: var(--ac-primary);
+}
+
+

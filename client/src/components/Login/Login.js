@@ -1,6 +1,9 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-import "./Login.css"
+import "./Login.css";
+import Logo from "../../assets/AC-Logo.svg";
+import FacebookLogo from "../../assets/facebook.svg"
+import GoogleLogo from "../../assets/googleplus.svg"
 
 class Login extends React.Component{
     constructor(props){
@@ -46,12 +49,19 @@ class Login extends React.Component{
             .then(console.log());
     }
 
+    onGoogleLogin = () =>{
+        console.log('google Login init');
+        fetch('/auth/google');
+        this.props.toggleModal('none');
+    }
+
     render(){
         return(
             <div className="login-container">
                 <div className="Login">
-                    <div className="welcome text-primary dark-primary">
-                        Welcome to Cycly!
+                    <img src={Logo} className='login-logo' alt="" width='26%'/>
+                    <div className="welcome text-primary">
+                        Welcome!
                     </div>
                     <div className="card-bkg form-container">
                         <form action="" className='form'>
@@ -61,8 +71,22 @@ class Login extends React.Component{
                             Password: <br/>
                             <input type="password"  placeholder='Enter Password' name="password" className='inputs' id="password-box"/>
                             <br/>
-                            <Link exact to='/dashboard' onClick={this.onLogin} type="button"  className='btn-signup-form button accent'>Login</Link>
-                            <input type="button"  onClick={() => this.props.toggleModal('none')} className='btn-cancel-form button light-primary' value="Cancel"/>
+                            <div className="btn-group-local">
+                                <Link exact to='/dashboard' onClick={this.onLogin} type="button"  className='btn-signup-form button'>Login</Link>
+                                <input type="button"  onClick={() => this.props.toggleModal('none')} className='btn-cancel-form button' value="Cancel"/>
+                            </div> <hr/>
+                            <span className="or-login-with">Or login with</span>
+                            <div className="btn-group-oauth">
+                                <a href ='auth/google' onClick={this.onGoogleLogin} className="btn-group btn-google-form button">
+                                    <img src={GoogleLogo} alt="" width= '30%'className='icon'/>
+                                    <span  className='btn-text '>Google</span>
+                                </a>
+                                <span className="or">or</span>
+                                <a href ='auth/google' onClick={this.onGoogleLogin} className="btn-group btn-facebook-form button">
+                                    <img src={FacebookLogo} alt="" width= '28%' className='icon'/>
+                                    <span className='btn-text '>Facebook</span>
+                                </a>
+                            </div>
                         </form>
                     </div>
                 </div>
