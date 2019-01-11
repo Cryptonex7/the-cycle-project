@@ -1,4 +1,4 @@
-import { SET_PAGE_VALUE, TOGGLE_MODAL, LOAD_USER} from "../constants";
+import { SET_PAGE_VALUE, TOGGLE_MODAL, LOAD_USER, FETCH_USER} from "../constants";
 
 const initialStatePage = {
     page : window.location.pathname
@@ -28,12 +28,12 @@ export const toggleModal = (state= initialStateModal, action={}) => {
 
 const initialStateUser = {
     user: {
-        id: 0,
-        name: '',
-        email: '',
-        password: ''
+        googleID: 0,
+        name: 'John Doe',
+        email: 'john@email.com',
     }
 }
+
 
 export const setUserState = (state = initialStateUser, action={}) => {
     switch(action.type){
@@ -43,3 +43,13 @@ export const setUserState = (state = initialStateUser, action={}) => {
             return state;
     }
 }
+
+export const authReducer = (state = initialStateUser, action={}) => {
+    switch(action.type){
+        case FETCH_USER:
+            return Object.assign({}, state, {user: action.payload})
+        default:
+            return state;
+    }
+}
+

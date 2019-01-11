@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from "react-redux";
 import { createLogger } from "redux-logger";
 import { createStore, applyMiddleware, combineReducers } from "redux";
+import reduxThunk from 'redux-thunk';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
@@ -10,7 +11,7 @@ import { changePage, toggleModal, setUserState } from './reducers/reducers';
 
 const logger = createLogger();
 const rootReducer = combineReducers({ changePage, toggleModal, setUserState });
-const store = createStore(rootReducer, applyMiddleware(logger));
+const store = createStore(rootReducer, applyMiddleware(reduxThunk, logger));
 
 ReactDOM.render((
     <Provider store = {store}>

@@ -1,9 +1,29 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 import "./Login.css";
+import { connect } from "react-redux";
 import Logo from "../../assets/AC-Logo.svg";
-import FacebookLogo from "../../assets/facebook.svg"
-import GoogleLogo from "../../assets/googleplus.svg"
+import FacebookLogo from "../../assets/facebook.svg";
+import GoogleLogo from "../../assets/googleplus.svg";
+import { setPage, toggleModalState, loadUser } from '../../actions/actions';
+
+
+const mapStateToProps = state => {
+  return {
+	page: state.changePage.page,
+	isModalOpen: state.toggleModal.isModalOpen,
+	user: state.setUserState.user
+
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+	onPageChange: (page) => dispatch(setPage(page)),
+	toggleModal: (isModalOpen) => dispatch(toggleModalState(isModalOpen)),
+	setUserState: (user) => dispatch(loadUser(user))
+  }
+}
 
 class Login extends React.Component{
     constructor(props){
@@ -45,15 +65,20 @@ class Login extends React.Component{
     onLogin = () =>{
         console.log(this.state.user);
         this.props.toggleModal("none");
-        fetch('/dashboard')
-            .then(console.log());
+        this.props.setUserState(this.state.user);
     }
 
-    onGoogleLogin = () =>{
+    onGoogleLogin = async () =>{
         console.log('google Login init');
-        fetch('/auth/google');
+
+        const user = await fetch('/api/current_user');
+
+        Object.assign({}, this.state.user, user)
+        this.props.setUserState(this.state);
+        console.log(this.state)
         this.props.toggleModal('none');
     }
+
 
     render(){
         return(
@@ -95,4 +120,4 @@ class Login extends React.Component{
     }
 }
 
-export default Login;
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

@@ -4,54 +4,70 @@ import "../Login/Login.css";
 import Logo from "../../assets/AC-Logo.svg";
 import FacebookLogo from "../../assets/facebook.svg"
 import GoogleLogo from "../../assets/googleplus.svg"
+import { connect } from "react-redux";
+import { setPage, toggleModalState, loadUser } from '../../actions/actions';
+
+
+const mapStateToProps = state => {
+  return {
+	page: state.changePage.page,
+	isModalOpen: state.toggleModal.isModalOpen,
+	user: state.setUserState.user
+
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+	onPageChange: (page) => dispatch(setPage(page)),
+	toggleModal: (isModalOpen) => dispatch(toggleModalState(isModalOpen)),
+	setUserState: (user) => dispatch(loadUser(user))
+  }
+}
 
 class SignUp extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            user: {
-                name: '',
-                email: '',
-                password: ''
-            }
+            name: '',
+            email: '',
+            password: ''
         }
+
+        this.onNameChange = this.onNameChange.bind(this);
+        this.onEmailChange = this.onEmailChange.bind(this);
+        this.onPasswordChange = this.onPasswordChange.bind(this);
+
     }
 
-    onNameChange = (event) => {
-        this.setState(prevState => ({
-            user: {
-                ...prevState.user,
-                name: event.target.value
-            }
-        }))
-    }
-    onEmailChange = (event) => {
-        this.setState(prevState => ({
-            user: {
-                ...prevState.user,
-                email: event.target.value
-            }
-        }))
-    }
-    onPasswordChange = (event) => {
-        this.setState(prevState => ({
-            user: {
-                ...prevState.user,
-                password: event.target.value
-            }
-        }))
+    onNameChange(event){
+        this.setState({ name: event.target.value });
     }
 
+    
+    onEmailChange(event){
+        this.setState({ email: event.target.value });
+    }
+    
+    onPasswordChange(event){
+        this.setState({ password: event.target.value });
+    }
     onLogin = () =>{
         console.log(this.state.user);
         this.props.toggleModal("none");
-        fetch('/dashboard')
-            .then(console.log());
+        this.props.setUserState(this.state);
+        console.log( " USER: ", this.state)
     }
 
-    onGoogleLogin = () =>{
-        console.log('google SignUp init');
-        fetch('/auth/google');
+    onGoogleLogin = async () =>{
+        console.log('google Login init');
+
+        const res = await fetch('/auth/google');
+        const user = await res.json();
+
+        Object.assign({}, this.state.user, user)
+        this.props.setUserState(this.state);
+        console.log(this.state)
         this.props.toggleModal('none');
     }
 
@@ -76,7 +92,7 @@ class SignUp extends React.Component{
                                 <input type="password" onChange={this.onPasswordChange} placeholder='Enter Password' name="password" className='inputs' id="password-box"/>
                                 <br/>
                                 Confirm Password: <br/>
-                                <input type="password"  onChange={this.onRePasswordChange}placeholder='Confirm Password' name="re-password" className='inputs' id="re-password-box"/>
+                                <input type="password"  placeholder='Confirm Password' name="re-password" className='inputs' id="re-password-box"/>
                                 <br/>
                                 <div className="btn-group-local">
                                     <Link exact to='/dashboard' onClick={this.onLogin} type="button"  className='btn-signup-form button'>Sign Up</Link>
@@ -104,4 +120,4 @@ class SignUp extends React.Component{
     }
 }
 
-export default SignUp;
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp);;

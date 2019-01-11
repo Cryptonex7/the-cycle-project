@@ -17,6 +17,13 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 class Dashboard extends React.Component {
+	componentDidMount(){
+		fetch('/api/current_user')
+			.then(res => res.json())
+			.then(user => {
+				this.props.setUserState(user);
+			})
+	}
     render() {
         return(
             <div className="Dashboard body-bkgx">

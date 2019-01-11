@@ -8,16 +8,23 @@ module.exports  = (app) => {
         })
     );
     
-    app.get(
-        '/auth/google/callback', 
-        passport.authenticate('google'),
+    // app.get(
+    //     '/auth/google/callback', 
+    //     passport.authenticate('google'),
+    //     (req, res) => {
+    //         res.redirect('/dashboard');
+    //     }
+    // );
+
+    app.get('/auth/google/callback', 
+        passport.authenticate('google', { failureRedirect: '/auth/goole' }),
         (req, res) => {
+            // Successful authentication, redirect home.
             res.redirect('/dashboard');
-        }
-    );
+        });
 
     app.get('/api/current_user', (req, res) => {
-        res.send(req.user);
+        req.user ? res.send(req.user) : res.send({no: "user"})
     }); 
 
     app.get('/api/logout', (req, res) => {

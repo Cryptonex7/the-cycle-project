@@ -58,6 +58,7 @@ class NavBar extends Component {
                     #<span className="gray-text">the</span>Smart<span className="red-text">Login</span><span className="accent-text">Experience</span>
                 </div>
             </div>
+            <div className="page-title">{this.props.user.name}</div>
             <div className="Navbar__Link Navbar__Link-toggle">
                 <SideButton visibilityFunction={this.rotations}/>
             </div>
