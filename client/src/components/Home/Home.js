@@ -1,14 +1,14 @@
 import React from 'react';
 import Header from './Header/Header';
 import { connect } from "react-redux";
-import { toggleModalState, loadUser } from '../../actions/actions';
+import { toggleModalState, loadUser, fetchAndSetUser } from '../../actions/actions';
 
 import "./Home.css"
 
 const mapStateToProps = state => {
   return {
     isModalOpen: state.toggleModal.isModalOpen,
-  	user: state.setUserState.user
+  	user: state.fetchAndSetUser.user
     
   }
 }
@@ -16,7 +16,9 @@ const mapStateToProps = state => {
 const mapDispatchToProps = (dispatch) => {
   return {
 	toggleModal: (isModalOpen) => dispatch(toggleModalState(isModalOpen)),
-	setUserState: (user) => dispatch(loadUser(user))
+  setUserState: (user) => dispatch(loadUser(user)),
+	fetchAndSetUser: () => dispatch(fetchAndSetUser())
+  
 
   }
 }

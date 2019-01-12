@@ -7,16 +7,15 @@ import Login from './components/Login/Login';
 import { connect } from "react-redux";
 import './App.css';
 import "./palette.css"
-import { setPage, toggleModalState, loadUser, fetchUser } from './actions/actions';
+import { setPage, toggleModalState, loadUser, fetchAndSetUser } from './actions/actions';
 import SignUp from './components/SignUp/SignUp';
-import { FETCH_USER } from './constants';
-import { authReducer } from './reducers/reducers';
 
 const mapStateToProps = state => {
   return {
 	page: state.changePage.page,
 	isModalOpen: state.toggleModal.isModalOpen,
-	user: state.setUserState.user
+	user: state.fetchAndSetUser.user,
+	isPending: state.fetchAndSetUser.isPending
 
   }
 }
@@ -26,14 +25,22 @@ const mapDispatchToProps = (dispatch) => {
 	onPageChange: (page) => dispatch(setPage(page)),
 	toggleModal: (isModalOpen) => dispatch(toggleModalState(isModalOpen)),
 	setUserState: (user) => dispatch(loadUser(user)),
-	fetchUser: (type) => dispatch(authReducer(fetchUser(type)))
+	fetchAndSetUser: () => dispatch(fetchAndSetUser())
   }
 }
 
 class App extends Component {
 	componentDidMount(){
 		console.log('mount')
-		this.props.fetchUser(FETCH_USER);
+		// this.props.fetchAndSetUser(FETCH_USER);
+		
+		if(this.props.user.auth !== 'local')
+			this.props.fetchAndSetUser();
+			// fetch('/api/current_user')
+			// 	.then(res => res.json())
+			// 	.then(user => {
+			// 		this.props.setUserState(user);
+			// 	})
 	}
 	
 	modalSwitch = value => {

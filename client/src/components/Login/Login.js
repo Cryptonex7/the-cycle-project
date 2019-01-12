@@ -1,18 +1,18 @@
 import React from 'react';
-import { Link } from "react-router-dom";
+import {  } from "react-router-dom";
 import "./Login.css";
 import { connect } from "react-redux";
 import Logo from "../../assets/AC-Logo.svg";
 import FacebookLogo from "../../assets/facebook.svg";
 import GoogleLogo from "../../assets/googleplus.svg";
-import { setPage, toggleModalState, loadUser } from '../../actions/actions';
+import { setPage, toggleModalState, loadUser, fetchAndSetUser } from '../../actions/actions';
 
 
 const mapStateToProps = state => {
   return {
 	page: state.changePage.page,
 	isModalOpen: state.toggleModal.isModalOpen,
-	user: state.setUserState.user
+	user: state.fetchAndSetUser.user
 
   }
 }
@@ -21,7 +21,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
 	onPageChange: (page) => dispatch(setPage(page)),
 	toggleModal: (isModalOpen) => dispatch(toggleModalState(isModalOpen)),
-	setUserState: (user) => dispatch(loadUser(user))
+    setUserState: (user) => dispatch(loadUser(user)),
+	fetchAndSetUser: () => dispatch(fetchAndSetUser())
+    
   }
 }
 
@@ -70,12 +72,6 @@ class Login extends React.Component{
 
     onGoogleLogin = async () =>{
         console.log('google Login init');
-
-        const user = await fetch('/api/current_user');
-
-        Object.assign({}, this.state.user, user)
-        this.props.setUserState(this.state);
-        console.log(this.state)
         this.props.toggleModal('none');
     }
 
@@ -89,15 +85,15 @@ class Login extends React.Component{
                         Welcome!
                     </div>
                     <div className="card-bkg form-container">
-                        <form action="" className='form'>
+                        <form action="/login" method="post" className='form'>
                             Email: <br/>
-                            <input type="email"     placeholder='Enter Email' name="email" className='inputs' id="email-box"/>
+                            <input type="text"     placeholder='Enter Email' name="username" className='inputs' id="email-box"/>
                             <br/>
                             Password: <br/>
                             <input type="password"  placeholder='Enter Password' name="password" className='inputs' id="password-box"/>
                             <br/>
                             <div className="btn-group-local">
-                                <Link exact to='/dashboard' onClick={this.onLogin} type="button"  className='btn-signup-form button'>Login</Link>
+                                <input type = 'submit' value='Log In' onClick={this.onLogin}  className='btn-signup-form button'/>
                                 <input type="button"  onClick={() => this.props.toggleModal('none')} className='btn-cancel-form button' value="Cancel"/>
                             </div> <hr/>
                             <span className="or-login-with">Or login with</span>

@@ -8,5 +8,13 @@ module.exports = function(app) {
         '/api/*', 
         { target: 'http://localhost:5000' }
     ));
+    app.use(proxy(
+        '/login', 
+        { target: 'http://localhost:5000' }
+    )); 
+    app.use(proxy(
+        '/local/signup', 
+        { target: 'http://localhost:5000' }
+    ));
     
 }

@@ -1,18 +1,18 @@
 import { connect } from "react-redux";
 import React, {Component} from 'react';
-import { NavLink } from 'react-router-dom'
+import {  } from 'react-router-dom'
 import SideButton from './SideButton/SideButton';
 
 
 import './NavBar.css';
-import { setPage, toggleModalState, loadUser } from '../../actions/actions';
+import { setPage, toggleModalState, loadUser, fetchAndSetUser } from '../../actions/actions';
 
 
 const mapStateToProps = state => {
   return {
 	page: state.changePage.page,
 	isModalOpen: state.toggleModal.isModalOpen,
-	user: state.setUserState.user
+	user: state.fetchAndSetUser.user
 
   }
 }
@@ -21,7 +21,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
 	onPageChange: (page) => dispatch(setPage(page)),
 	toggleModal: (isModalOpen) => dispatch(toggleModalState(isModalOpen)),
-	setUserState: (user) => dispatch(loadUser(user))
+  setUserState: (user) => dispatch(loadUser(user)),
+	fetchAndSetUser: () => dispatch(fetchAndSetUser())
+  
 
   }
 }

@@ -1,4 +1,7 @@
 const passport = require('passport');
+const mongoose = require('mongoose');
+const User = mongoose.model('users');
+
 
 module.exports  = (app) => {
     app.get(
@@ -32,4 +35,30 @@ module.exports  = (app) => {
         res.redirect('/');
 
     });
+        
+    // Local auth routes
+    app.post('/login/',
+        passport.authenticate('local', { 
+            successRedirect: `/dashboard?username=`, 
+            failureRedirect: '/err'
+         })
+    );
+
+    app.post('/local/signup', (req, res) => {
+        const user = new User({ 
+            googleID: '1234',
+            name: req.body.name,
+            email: req.body.email,
+            password: req.body.password,
+            joined: new Date()
+        })
+        user.save()
+
+        res.send({sent: req.body});
+    })
+
+
+    
 }
+
+

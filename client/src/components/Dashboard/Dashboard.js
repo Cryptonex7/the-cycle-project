@@ -1,28 +1,30 @@
 import React from 'react';
 import { connect } from "react-redux";
-import { toggleModalState, loadUser } from '../../actions/actions';
+import { loadUser, fetchAndSetUser } from '../../actions/actions';
 
 import "./Dashboard.css"
 
 const mapStateToProps = state => {
   return {
-	user: state.setUserState.user
+	user: state.fetchAndSetUser.user
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-	setUserState: (user) => dispatch(loadUser(user))
+  setUserState: (user) => dispatch(loadUser(user)),
+	fetchAndSetUser: () => dispatch(fetchAndSetUser())
+  
   }
 }
 
 class Dashboard extends React.Component {
 	componentDidMount(){
-		fetch('/api/current_user')
-			.then(res => res.json())
-			.then(user => {
-				this.props.setUserState(user);
-			})
+		// fetch('/api/current_user')
+		// 	.then(res => res.json())
+		// 	.then(user => {
+		// 		this.props.setUserState(user);
+		// 	})
 	}
     render() {
         return(

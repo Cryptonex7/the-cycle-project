@@ -1,4 +1,10 @@
-import { SET_PAGE_VALUE, TOGGLE_MODAL, LOAD_USER, FETCH_USER} from "../constants";
+import { 
+    SET_PAGE_VALUE, 
+    TOGGLE_MODAL, 
+    LOAD_USER, 
+    FETCH_USER_PENDING,
+    FETCH_USER_SUCCESS
+} from "../constants";
 
 const initialStatePage = {
     page : window.location.pathname
@@ -31,23 +37,21 @@ const initialStateUser = {
         googleID: 0,
         name: 'John Doe',
         email: 'john@email.com',
-    }
+        password:'',
+        auth: 'no user',
+    },
+    isPending: false
 }
 
-
-export const setUserState = (state = initialStateUser, action={}) => {
+export const fetchAndSetUser = (state = initialStateUser, action={}) => {
+    console.log('reducing', action);
     switch(action.type){
+        case FETCH_USER_PENDING: 
+            return Object.assign({}, state, {isPending: true})
+        case FETCH_USER_SUCCESS:
+            return Object.assign({}, state, {user: action.payload, isPending: false})
         case LOAD_USER:
-            return Object.assign({}, state, {user: action.payload})
-        default:
-            return state;
-    }
-}
-
-export const authReducer = (state = initialStateUser, action={}) => {
-    switch(action.type){
-        case FETCH_USER:
-            return Object.assign({}, state, {user: action.payload})
+            return Object.assign({}, state, {user: action.payload, isPending: false})
         default:
             return state;
     }

@@ -1,4 +1,12 @@
-import { SET_PAGE_VALUE, TOGGLE_MODAL, LOAD_USER, FETCH_USER } from '../constants';
+import { 
+    SET_PAGE_VALUE, 
+    TOGGLE_MODAL, 
+    LOAD_USER, 
+    FETCH_USER_FAILED, 
+    FETCH_USER_PENDING, 
+    FETCH_USER_SUCCESS 
+} from '../constants';
+
 import axios from 'axios';
 
 export const setPage = (page) => ({
@@ -16,12 +24,11 @@ export const loadUser = (user) => ({
     payload: user
 })
 
-export const fetchUser = (type) => {
-    return function(dispatch){
-        console.log('fetchin')
-        axios.get('/api/current_user')
-            .then(res => dispatch( {type: type, payload: res.data }))
-
-    }
+export const fetchAndSetUser = () => (dispatch) => {
+    console.log('fetchin')
+    dispatch({type: FETCH_USER_PENDING })
+    axios.get('/api/current_user')
+        .then(res => dispatch({ type: FETCH_USER_SUCCESS, payload: res.data }))
+        .catch( err => dispatch({ type: FETCH_USER_FAILED, payload: err }))
 
 }

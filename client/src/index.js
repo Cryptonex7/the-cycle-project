@@ -7,10 +7,10 @@ import reduxThunk from 'redux-thunk';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import { changePage, toggleModal, setUserState } from './reducers/reducers';
+import { changePage, toggleModal, fetchAndSetUser } from './reducers/reducers';
 
 const logger = createLogger();
-const rootReducer = combineReducers({ changePage, toggleModal, setUserState });
+const rootReducer = combineReducers({ changePage, toggleModal, fetchAndSetUser });
 const store = createStore(rootReducer, applyMiddleware(reduxThunk, logger));
 
 ReactDOM.render((

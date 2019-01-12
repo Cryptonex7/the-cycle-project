@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from "react-redux";
-import { toggleModalState, loadUser } from '../../actions/actions';
+import {  loadUser } from '../../actions/actions';
 
 import "./Dashboard.css"
 
