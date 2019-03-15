@@ -3,6 +3,7 @@ import NavBar from './components/NavBar/NavBar';
 import Router from './Router';
 import { BrowserRouter } from "react-router-dom";
 import Modal from "./components/Modal/Modal";
+
 import Login from './components/Login/Login';
 import { connect } from "react-redux";
 import './App.css';

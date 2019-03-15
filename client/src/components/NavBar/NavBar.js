@@ -57,7 +57,7 @@ class NavBar extends Component {
         <div className="Navbar">
             <div className="Navbar__Link Navbar__Link-brand">
                 <div className="page-title">
-                    #<span className="gray-text">the</span>Smart<span className="red-text">Login</span><span className="accent-text">Experience</span>
+                    #<span className="gray-text">the</span>Smart<span className="red-text">Cycling</span><span className="accent-text">Experience</span>
                 </div>
             </div>
             <div className="page-title">{this.props.user.name}</div>
@@ -66,10 +66,10 @@ class NavBar extends Component {
             </div>
             <nav className="Navbar__Items Navbar__Items--right" id="flex-container">
                 <div className="Navbar__Link">
-                    <button  className="linkStyles"    activeClassName="nav-active"  onClick={()=> this.props.toggleModal('login')}    >Login</button>
+                    <button  className="linkStyles button"    activeClassName="nav-active"  onClick={()=> this.props.toggleModal('login')}    >Login</button>
                 </div>
                 <div className="Navbar__Link">
-                    <button  className="linkStyles"    activeClassName="nav-active"  onClick={()=> this.props.toggleModal('signup')}    >SignUp</button>
+                    <button  className="linkStyles button"    activeClassName="nav-active"  onClick={()=> this.props.toggleModal('signup')}    >SignUp</button>
                 </div>
                 
             </nav>

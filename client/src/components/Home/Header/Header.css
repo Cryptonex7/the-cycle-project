@@ -28,6 +28,10 @@
     animation: float 4s ease-in-out 800ms infinite;
 }
 
+.space {
+    margin-right: 30px;
+}
+
 .sub-title{
     font-size: 2rem;
 }
