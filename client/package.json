@@ -2,7 +2,7 @@
   "name": "cycly",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://Cryptonex7.github.com/the-cycle-project/client",
+  "homepage": "https://Cryptonex7.github.io/the-cycle-project",
   "dependencies": {
     "axios": "^0.18.0",
     "http-proxy-middleware": "^0.19.1",
