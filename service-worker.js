@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/Cryptonex7/the-cycle-project/tree/master/client/precache-manifest.62de8720d24c23624bd898cb48f534cd.js"
+  "/the-cycle-project/client/precache-manifest.fccaa4e6d4e41cf69dc93c3b3164f89d.js"
 );
 
 workbox.clientsClaim();
@@ -28,7 +28,7 @@ self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerNavigationRoute("/Cryptonex7/the-cycle-project/tree/master/client/index.html", {
+workbox.routing.registerNavigationRoute("/the-cycle-project/client/index.html", {
   
   blacklist: [/^\/_/,/\/[^\/]+\.[^\/]+$/],
 });
