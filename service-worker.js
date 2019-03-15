@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/the-cycle-project/client/precache-manifest.fccaa4e6d4e41cf69dc93c3b3164f89d.js"
+  "/the-cycle-project/precache-manifest.622ff74fe6dd4b13fb0d77e91cd8fec5.js"
 );
 
 workbox.clientsClaim();
@@ -28,7 +28,7 @@ self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerNavigationRoute("/the-cycle-project/client/index.html", {
+workbox.routing.registerNavigationRoute("/the-cycle-project/index.html", {
   
   blacklist: [/^\/_/,/\/[^\/]+\.[^\/]+$/],
 });
