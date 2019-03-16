@@ -8,7 +8,8 @@ const cors = require('cors');
 require('./models/User');
 require('./services/passport');
 
-mongoose.connect(keys.mongoURI);
+mongoose.connect(keys.mongoURI, { dbName: 'cycle-db', useNewUrlParser: true });
+console.log('Connected to mongoDB');
 const app = express();
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }));
