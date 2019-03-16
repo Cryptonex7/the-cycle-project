@@ -27,7 +27,7 @@ export const loadUser = (user) => ({
 export const fetchAndSetUser = () => (dispatch) => {
     console.log('fetchin')
     dispatch({type: FETCH_USER_PENDING })
-    axios.get('/api/api/current_user')
+    axios.get('/api/current_user')
         .then(res => dispatch({ type: FETCH_USER_SUCCESS, payload: res.data }))
         .catch( err => dispatch({ type: FETCH_USER_FAILED, payload: err }))
 
