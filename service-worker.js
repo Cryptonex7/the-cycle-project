@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/the-cycle-project/precache-manifest.622ff74fe6dd4b13fb0d77e91cd8fec5.js"
+  "/the-cycle-project/precache-manifest.070917ede6610def66be14d341d24ecc.js"
 );
 
 workbox.clientsClaim();
