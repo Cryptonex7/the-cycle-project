@@ -98,7 +98,7 @@ class Login extends React.Component{
                             </div> <hr/>
                             <span className="or-login-with">Or login with</span>
                             <div className="btn-group-oauth">
-                                <a href ='auth/google' onClick={this.onGoogleLogin} className="btn-group btn-google-form button">
+                                <a href ='/auth/google' onClick={this.onGoogleLogin} className="btn-group btn-google-form button">
                                     <img src={GoogleLogo} alt="" width= '30%'className='icon'/>
                                     <span  className='btn-text '>Google</span>
                                 </a>

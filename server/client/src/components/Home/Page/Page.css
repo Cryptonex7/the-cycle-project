@@ -1,0 +1,26 @@
+.bubble {
+    width: 170pt;
+    height: 170pt;
+    border-radius: 170pt;
+    border: 30px solid #bf0000;
+    filter: drop-shadow(0px 0px 60px #dd350092);
+    position: absolute;
+}
+
+.cycly-logo{
+    margin: 100px auto;
+    text-align: center;
+    display: inline-block;
+    font-size: 3em;
+}
+
+.page-container{
+    min-height: 1000px;
+    max-width: 70%;
+    padding: 50px 50px;
+    /* border-left: solid 1px lightgray;
+    border-right: solid 1px lightgray; */
+    z-index: -10000;
+    margin: auto;
+    box-shadow: 10px 5px 20px 0px #66666652;
+}

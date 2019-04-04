@@ -31,17 +31,20 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 class App extends Component {
+	
+	
+
 	componentDidMount(){
 		console.log('mount')
 		// this.props.fetchAndSetUser(FETCH_USER);
 		
 		if(this.props.user.auth !== 'local')
 			this.props.fetchAndSetUser();
-			// fetch('/api/current_user')
-			// 	.then(res => res.json())
-			// 	.then(user => {
-			// 		this.props.setUserState(user);
-			// 	})
+			fetch('api/current_user')
+				.then(user => {
+					// this.props.setUserState(user);
+					console.log(user)
+				})
 	}
 	
 	modalSwitch = value => {

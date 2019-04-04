@@ -37,9 +37,9 @@ module.exports  = (app) => {
     });
         
     // Local auth routes
-    app.post('/login/',
+    app.post('/auth/login/',
         passport.authenticate('local', { 
-            successRedirect: `/dashboard?username=`, 
+            successRedirect: `/dashboard?username=Hello:user`, 
             failureRedirect: '/err'
          })
     );

@@ -6,6 +6,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "http-proxy-middleware": "^0.19.1",
+    "lax.js": "^1.2.2",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "react-redux": "^6.0.0",
@@ -14,6 +15,7 @@
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0"
   },
+  "proxy": "http://localhost:5000",
   "devDependencies": {
     "gh-pages": "^2.0.1",
     "redux-logger": "^3.0.6"
